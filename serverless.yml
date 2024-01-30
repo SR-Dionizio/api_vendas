@@ -1,0 +1,16 @@
+org: danielcasa
+app: agora-vai-2
+service: agora-vai
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /vendas
+          method: get
