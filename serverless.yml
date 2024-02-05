@@ -1,16 +1,43 @@
-org: danielcasa
-app: agora-vai-2
-service: agora-vai
+service: api-vendas
 frameworkVersion: '3'
 
 provider:
   name: aws
   runtime: python3.11
+  memorySize: 250
 
 functions:
-  hello:
-    handler: handler.hello
+  vendas:
+    handler: handler.vendas
     events:
       - httpApi:
           path: /vendas
+          method: get
+
+  clientes:
+    handler: handler.clientes
+    events:
+      - httpApi:
+          path: /clientes
+          method: get
+
+  produtos:
+    handler: handler.produtos
+    events:
+      - httpApi:
+          path: /produtos
+          method: get
+
+  metodosPagamentos:
+    handler: handler.metodos_pagamentos
+    events:
+      - httpApi:
+          path: /metodos_pagamentos
+          method: get
+
+  locais:
+    handler: handler.locais
+    events:
+      - httpApi:
+          path: /locais
           method: get
